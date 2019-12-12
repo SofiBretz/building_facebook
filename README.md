@@ -2,6 +2,10 @@
 
 In this project we’ll build a large portion of the core Facebook user functionality.
 
+![screenshot](app/assets/images/building_facebook_ERD.png)
+
+Building Facebook ERD.
+
 ## Built With
 
 - Ruby on Rails
