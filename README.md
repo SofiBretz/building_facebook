@@ -4,7 +4,7 @@ In this project we’ll build a large portion of the core Facebook user function
 
 ![screenshot](app/assets/images/Building Facebook ERD.png)
 
-Building Facebook ERD.
+Building Facebook ERD. 
 
 ## Built With
 
