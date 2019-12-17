@@ -2,7 +2,7 @@
 
 In this project we’ll build a large portion of the core Facebook user functionality.
 
-![screenshot](app/assets/images/Building Facebook ERD.png)
+![screenshot ](https://github.com/SofiBretz/building_facebook/blob/feature/milestone1/app/assets/images/Building%20Facebook%20ERD.png?raw=true)
 
 Building Facebook ERD. 
 
