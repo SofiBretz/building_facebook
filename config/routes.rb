@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'logout', to: 'devise/sessions#destroy'
   end
   devise_for :users
-  root 'users#index'
+  root 'posts#index'
   resources :posts, only: [:index, :show, :new, :create]
   resources :users, only: [:index, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

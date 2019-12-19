@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  def index
+ before_action :sign_up_if_not_logged_in
+ def index
     @users = User.all
  end
 
