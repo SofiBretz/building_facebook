@@ -250,7 +250,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.1)
-  rspec-rails (~> 3.9)
+  rspec-rails
   sass-rails (>= 6)
   selenium-webdriver
   spring
