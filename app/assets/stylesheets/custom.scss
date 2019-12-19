@@ -1,2 +1,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar-default{
+  background-color: #4267B2;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+    padding: 0 10px;
+}
+.navbar-default .navbar-nav > li {
+  display: inline-flex;
+}
+.navbar-nav{
+  margin-top: 12px;
+}
+.nav-link {
+  color: #fff;
+}
+
+#logo{
+  color: #fff;
+}
