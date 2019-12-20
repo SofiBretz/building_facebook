@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name])
   end
 
   def sign_up_if_not_logged_in
-   redirect_to new_user_registration_path unless user_signed_in?
- end
+    redirect_to new_user_registration_path unless user_signed_in?
+  end
 end

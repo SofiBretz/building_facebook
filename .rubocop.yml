@@ -9,6 +9,7 @@ AllCops:
     - '*.yml'
     - 'Gemfile'
     - 'node_modules/**/*'
+    - spec/models/user_spec.rb
   DisplayCopNames: true
 
 Metrics/LineLength:
@@ -24,6 +25,7 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
 
+
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
@@ -35,4 +37,4 @@ Layout/ExtraSpacing:
   AllowForAlignment: false
 Layout/MultilineMethodCallIndentation:
   Enabled: true
-  EnforcedStyle: indented 
+  EnforcedStyle: indented
