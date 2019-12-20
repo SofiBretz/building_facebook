@@ -1,6 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+    font-family: 'Josefin Sans', sans-serif;
+}
 .navbar-default{
   background-color: #4267B2;
 }

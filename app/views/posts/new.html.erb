@@ -1,6 +1,9 @@
-<h1>Create a New Post </h1>
-  <%= form_for(@post) do |f| %>
-  <%= f.label :content  %>
-  <%= f.text_area :content  %>
-  <%= f.submit 'Create Post'  %>
-<% end %>
+<div class="col-sm-6 col-sm-offset-3">
+  <h4>Create New Post </h4>
+  <%= form_for(:post, url:posts_path) do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+    <%= f.submit 'Create Post', class: 'btn btn-primary'  %>
+    <% end %>
+</div>
