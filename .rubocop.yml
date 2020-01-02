@@ -12,7 +12,7 @@ AllCops:
     - spec/models/user_spec.rb
   DisplayCopNames: true
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
   Include: ["app/controllers/*"]
