@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
+  has_many :comments
+  has_many :likes
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
   validates :email, presence: true, length: { maximum: 255 },
@@ -14,4 +16,15 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
+
+  def like(post)
+  return if Like.find_by(user_id: id, post_id: post.id)
+
+  like.create(post_id: post.id)
+  end
+
+  def unlike(post)
+    like = Like.find_by(user_id: id, post_id: post.id)
+    like.destroy if like
+  end
 end
