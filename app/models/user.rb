@@ -18,13 +18,13 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { maximum: 50 }
 
   def like(post)
-  return if Like.find_by(user_id: id, post_id: post.id)
+    return if Like.find_by(user_id: id, post_id: post.id)
 
-  like.create(post_id: post.id)
+    like.create(post_id: post.id)
   end
 
   def unlike(post)
     like = Like.find_by(user_id: id, post_id: post.id)
-    like.destroy if like
+    like&.destroy
   end
 end
