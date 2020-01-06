@@ -1,10 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+h1, p {
+  padding: 0;
+  margin: 0;
+}
 body {
     font-family: 'Josefin Sans', sans-serif;
 }
 .navbar-default{
+  background-color: #4267B2;
+}
+.btn-primary{
   background-color: #4267B2;
 }
 .navbar-default .navbar-nav > li > a {
