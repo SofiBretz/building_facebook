@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
   def like(post)
     return if already_like?(post)
+
     likes.create(post_id: post.id)
   end
 
