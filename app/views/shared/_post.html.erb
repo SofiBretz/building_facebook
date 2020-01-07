@@ -2,10 +2,16 @@
     <div class="well">
       <span>Posted <%= link_to time_ago_in_words(post.created_at), post %> ago</span>
       <p class="mb-0"><%= post.content %></p>
-      <div class="">
-        <button class="btn btn-primary">Like</button>
-        <button class="btn btn-primary">Comment</button>
-        <button class="btn btn-primary">Delete</button>
+      <div>
+        <button >
+          <%= like_unlike(post) %> (<%= post.likes.size%>)
+        </button>
+        <button >
+          <%= link_to "Comments", post%> (<%= post.comments.count %>)
+        </button>
+        <button >
+          <%= link_to "Delete", '#'%>
+        </button>
       </div>
     </div>
 </div>
