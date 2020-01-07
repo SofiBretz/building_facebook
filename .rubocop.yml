@@ -11,7 +11,7 @@ AllCops:
     - 'node_modules/**/*'
   DisplayCopNames: true
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
   Include: ["app/controllers/*"]
@@ -24,6 +24,7 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
 
+
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
@@ -35,4 +36,4 @@ Layout/ExtraSpacing:
   AllowForAlignment: false
 Layout/MultilineMethodCallIndentation:
   Enabled: true
-  EnforcedStyle: indented 
+  EnforcedStyle: indented

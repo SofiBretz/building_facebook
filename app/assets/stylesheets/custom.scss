@@ -1,0 +1,35 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+h1, p {
+  padding: 0;
+  margin: 0;
+}
+body {
+    font-family: 'Josefin Sans', sans-serif;
+}
+.navbar-default{
+  background-color: #4267B2;
+}
+.btn-primary{
+  background-color: #4267B2;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+    padding: 0 10px;
+}
+.navbar-default .navbar-nav > li {
+  display: inline-flex;
+}
+.navbar-nav{
+  margin-top: 12px;
+}
+.nav-link {
+  color: #fff;
+}
+.container-profile{
+  margin: 0 15%;
+}
+#logo{
+  color: #fff;
+}

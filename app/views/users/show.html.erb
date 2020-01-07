@@ -1,0 +1,17 @@
+<div class="container-profile">
+  <div class="wrapper">
+    <div class="col-4">
+        <div class="col-md-4 col-12 text-md-right text-center">
+          <%= gravatar_for @user %>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <h3 class="text-capitalize">Posts Created By: <%= @user.first_name %> <%= @user.last_name %>:</h3>
+      <% @user.posts.each do |p|  %>
+        <%= render partial:'shared/post', locals:{post: p} %>
+      <% end %>
+    </div>
+  </div>
+</div>

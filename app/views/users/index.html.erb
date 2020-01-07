@@ -1,0 +1,17 @@
+<% @users.each do |user| %>
+<div class="container-profile">
+  <div class="wrapper">
+    <div class="row">
+        <div class="col-md-4 col-12 text-right">
+          <%= gravatar_for user, size: 50 %>
+        </div>
+        <div class="col-md-4 col-12">
+            <h3><%= user.first_name %> <%= user.last_name %></h3>
+        </div>
+        <button type="button" class="btn btn-primary">Add Friend</button>
+    </div>
+  </div>
+
+</div>
+
+<%end %>
