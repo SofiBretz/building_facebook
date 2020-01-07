@@ -10,7 +10,7 @@
           <%= link_to "Comments", post%> (<%= post.comments.count %>)
         </button>
         <button >
-          <%= link_to "Delete", '#'%>
+          <%= link_to 'Delete', post, method: :delete %>
         </button>
       </div>
     </div>

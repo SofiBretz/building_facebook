@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @posts = Post.all
   end
@@ -13,7 +15,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.build
   end
 
-  def destroy; end
+  def destroy
+    post = Post.find_by_id(params[:id])
+    post.destroy
+    redirect_to root_path
+  end
 
   def create
     @post = current_user.posts.build(post_params)
