@@ -17,10 +17,14 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
 
-  def like(post)
-    return if Like.find_by(user_id: id, post_id: post.id)
+  def already_like?(post)
+    Like.exists?(user_id: id, post_id: post.id)
+  end
 
-    like.create(post_id: post.id)
+  def like(post)
+    return if already_like?(post)
+
+    likes.create(post_id: post.id)
   end
 
   def unlike(post)

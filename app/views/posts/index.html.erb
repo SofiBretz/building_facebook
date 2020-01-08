@@ -1,41 +1,23 @@
-<div class="container-fluid col-sm-6 col-sm-offset-3">
-
- <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-        <h4 class="modal-title">Create New Post </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <%= form_for(:post, url:posts_path) do |f| %>
-          <div class="form-group">
-          <%= f.text_area :content, class: 'form-control' %>
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+      <% @posts.each do |post| %>
+          <div class="well">
+            <h3><%= gravatar_for post.user, size: 50 %> <%= link_to post.user.first_name, post.user %></h3>
+            <div class="col-12">
+              <strong><span>Posted <%= link_to time_ago_in_words(post.created_at), post %> ago</span></strong>
+            </div>
+            <div class="post-body">
+              <%= post.content %>
+            </div>
+            <div>
+              <button >
+                <%= like_unlike(post) %> (<%= post.likes.size%>)
+              </button>
+              <button >
+                <%= link_to "Comments", post %> (<%= post.comments.count %>)
+              </button>
+            </div>
           </div>
-          <%= f.submit 'Create Post', class: 'btn btn-primary'  %>
-          <% end %>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
+      <%end %>
     </div>
-  </div>
-<% @posts.each do |p| %>
-  <div class="row">
-    <h3><%= gravatar_for p.user %> <%= link_to p.user.first_name, p.user %></h3>
-    <div class="col-12">
-    <span>Posted <%= link_to time_ago_in_words(p.created_at), p %> ago</span>
-    <p><%= p.content %></p>
-    </div>
-  </div>
-<% end %>
 </div>
