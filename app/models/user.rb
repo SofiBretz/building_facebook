@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :likes
+  has_many :sent_requests, foreign_key: :sender_id, class_name: 'Friendship'
+  has_many :received_requests, foreign_key: :receiver_id, class_name: 'Friendship'
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
   validates :email, presence: true, length: { maximum: 255 },
@@ -31,4 +34,14 @@ class User < ApplicationRecord
     like = Like.find_by(user_id: id, post_id: post.id)
     like&.destroy
   end
+
+  def friends
+   friends_array = received_requests.map do  |u|
+   u.sender if u.confirmed
+   end
+   friends_array = friends_array + sent_requests.map do |u|
+   u.receiver if u.confirmed
+   end
+   friends_array.compact
+ end
 end
