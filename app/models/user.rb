@@ -37,11 +37,34 @@ class User < ApplicationRecord
 
   def friends
    friends_array = received_requests.map do  |u|
-   u.sender if u.confirmed
+     u.sender if u.confirmed
    end
+
    friends_array = friends_array + sent_requests.map do |u|
-   u.receiver if u.confirmed
+     u.receiver if u.confirmed
    end
    friends_array.compact
- end
+  end
+
+  def pending_friends
+    sent_requests.map{|u| u.receiver if !u.confirmed}.compact
+  end
+
+  def friend_requests
+    received_requests.map{|u| u.sender if !u.confirmed}.compact
+  end
+
+  def confirm_friend(user)
+    friendship = received_requests.find{|u| u.sender == user}
+    friendship.confirmed = true
+    friendship.save
+  end
+
+  def send_friend_request(user)
+    sent_requests.create(receiver_id: user.id)
+  end
+
+  def friend?(user)
+    friends.include?(user)
+  end
 end

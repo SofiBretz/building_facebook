@@ -8,7 +8,11 @@
         <div class="col-md-4 col-12">
             <h3><%= user.first_name %> <%= user.last_name %></h3>
         </div>
-        <button type="button" class="btn btn-primary">Add Friend</button>
+        <div class="col-md-4 col-12">
+            <button>
+              <%= friend_status @user %>
+            </button>
+        </div>
     </div>
   </div>
 
