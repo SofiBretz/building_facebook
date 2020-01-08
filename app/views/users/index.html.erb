@@ -1,21 +1,17 @@
-<% @users.each do |user| %>
-<div class="container-profile">
-  <div class="wrapper">
-    <div class="row">
-        <div class="col-md-4 col-12 text-right">
-          <%= gravatar_for user, size: 50 %>
+<div class="container-profile text-center">
+    <% @users.each do |user| %>
+    <div class="card col-md-4 col-12" >
+      <div class="well">
+        <%= gravatar_for user %>
+        <div class="card-body ">
+          <h4 class="card-title"><%= user.first_name %></h4>
+          <p class="card-text"><%= user.email %></p>
+          <div class="">
+            <%= friend_status(user) %>
+          </div>
+          <%= link_to 'See Profile', user, class: "btn btn-primary" %>
         </div>
-        <div class="col-md-4 col-12">
-            <h3><%= user.first_name %> <%= user.last_name %></h3>
-        </div>
-        <div class="col-md-4 col-12">
-            <button>
-              <%= friend_status @user %>
-            </button>
-        </div>
+      </div>
     </div>
-  </div>
-
+    <% end %>
 </div>
-
-<%end %>
