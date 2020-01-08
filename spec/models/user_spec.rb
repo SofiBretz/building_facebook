@@ -33,12 +33,11 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'user and friendship'  do
+  context 'user and friendship' do
     before :example do
       @user1 = User.create(first_name: 'test1', last_name: 'test1', email: 'test1@test.com', password: '123456')
       @user2 = User.create(first_name: 'test2', last_name: 'test2', email: 'test2@test.com', password: '123456')
       @user3 = User.create(first_name: 'test3', last_name: 'test3', email: 'test3@test.com', password: '123456')
-
     end
     it 'user can send many friend request' do
       @user1.send_friend_request(@user2)
@@ -54,8 +53,10 @@ RSpec.describe User, type: :model do
 
     it '2 users can be friend only if the request is accepted' do
       @user1.send_friend_request(@user2)
-      expect{@user2.confirm_friend(@user1)
-      @user1.reload}.to change{@user1.friends.count}.by(1)
+      expect do
+        @user2.confirm_friend(@user1)
+        @user1.reload
+      end .to change { @user1.friends.count }.by(1)
     end
   end
 end
