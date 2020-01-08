@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :comments, only: [:new, :create]
   resources :likes, only: [:create, :destroy]
-  resources :friendships, only: [:create, :update]
+  resources :friendships, only: [:create, :update, :index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
