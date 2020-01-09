@@ -19,4 +19,3 @@ class FriendshipsController < ApplicationController
     @friend_requests = current_user.friend_requests
   end
 end
-   
