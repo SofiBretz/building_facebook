@@ -36,22 +36,24 @@ class User < ApplicationRecord
   end
 
   def friends
-    friends_array = received_requests.map do |u|
-      u.sender if u.confirmed
+    friendships = sent_requests.includes(:receiver).where(confirmed: true).references(:users)
+    friendships.map do |f|
+    f.receiver
     end
-
-    friends_array += sent_requests.map do |u|
-      u.receiver if u.confirmed
-    end
-    friends_array.compact
   end
 
   def pending_friends
-    sent_requests.map { |u| u.receiver unless u.confirmed }.compact
+    requests = sent_requests.includes(:receiver).where(confirmed: false).references(:users)
+    requests.map do |r|
+    r.receiver
+    end
   end
 
   def friend_requests
-    received_requests.map { |u| u.sender unless u.confirmed }.compact
+    requests = received_requests.includes(:sender).where(confirmed: false).references(:users)
+    requests.map do |r|
+    r.sender
+    end
   end
 
   def confirm_friend(user)
