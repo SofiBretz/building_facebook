@@ -36,37 +36,37 @@ class User < ApplicationRecord
   end
 
   def friends
-  friendships = sent_requests.includes(:receiver).where(confirmed: true).references(:users)
-  friendships.map(&:receiver)
-end
+    friendships = sent_requests.includes(:receiver).where(confirmed: true).references(:users)
+    friendships.map(&:receiver)
+  end
 
-def pending_friends
-  requests = sent_requests.includes(:receiver).where(confirmed: false).references(:users)
-  requests.map(&:receiver)
-end
+  def pending_friends
+    requests = sent_requests.includes(:receiver).where(confirmed: false).references(:users)
+    requests.map(&:receiver)
+  end
 
-def friend_requests
-  requests = received_requests.includes(:sender).where(confirmed: false).references(:users)
-  requests.map(&:sender)
-end
+  def friend_requests
+    requests = received_requests.includes(:sender).where(confirmed: false).references(:users)
+    requests.map(&:sender)
+  end
 
-def confirm_friend(user)
-  friendship = received_requests.find { |u| u.sender == user }
-  friendship.confirmed = true
-  friendship.save
+  def confirm_friend(user)
+    friendship = received_requests.find { |u| u.sender == user }
+    friendship.confirmed = true
+    friendship.save
 
-  sent_requests.create(receiver_id: user.id, confirmed: true)
-end
+    sent_requests.create(receiver_id: user.id, confirmed: true)
+  end
 
-def send_friend_request(user)
-  return if Friendship.exists?(sender_id: id, receiver_id: user.id) || user.id == id
+  def send_friend_request(user)
+    return if Friendship.exists?(sender_id: id, receiver_id: user.id) || user.id == id
 
-  sent_requests.create(receiver_id: user.id)
-end
+    sent_requests.create(receiver_id: user.id)
+  end
 
-def friend?(user)
-  friends.include?(user)
-end
+  def friend?(user)
+    friends.include?(user)
+  end
 
   def news_feed
     friend_ids = friends.map(&:id)
