@@ -3,16 +3,17 @@
 class FriendshipsController < ApplicationController
   def create
     user = User.find(params[:user_id])
-    current_user.send_friend_request(user) if user
+    return unless user
 
+    current_user.send_friend_request(user)
     redirect_back(fallback_location: root_path)
   end
 
   def update
     user = User.find(params[:id])
-    current_user.confirm_friend(user) if user
-    Friendship.create sender_id: user.id, receiver_id: current_user.id, confirmed: true
+    return unless user
 
+    current_user.confirm_friend(user)
     redirect_back(fallback_location: root_path)
   end
 
