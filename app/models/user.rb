@@ -68,9 +68,8 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  def friends_posts
+  def news_feed
     friend_ids = friends.map(&:id)
-
-    Post.where('user_id IN (?)', friend_ids)
+    Post.where('user_id IN (?) OR user_id=?', friend_ids, id)
   end
 end
