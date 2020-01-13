@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
     get 'logout', to: 'devise/sessions#destroy'
   end
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root 'posts#index'
   resources :posts, only: [:index, :show, :new, :create, :destroy]
   resources :users, only: [:index, :show]
