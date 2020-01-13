@@ -5,6 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :posts
   has_many :comments
@@ -72,4 +73,20 @@ class User < ApplicationRecord
     friend_ids = friends.map(&:id)
     Post.where('user_id IN (?) OR user_id=?', friend_ids, id)
   end
+
+   def self.from_omniauth(auth)
+     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+     user.email = auth.info.email
+     user.password = Devise.friendly_token[0,20]
+     parse_name(user, auth.info.name) # assuming the user model has a name
+    # user.image = auth.info.image # assuming the user model has an image
+   end
+   end
+   
+   private
+   def self.parse_name(user, name)
+     name_arr = name.split(“ “)
+     user.last_name = name_arr.pop
+     user.first_name = name_arr.join(“ “)
+   end
 end
