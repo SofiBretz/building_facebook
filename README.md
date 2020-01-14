@@ -4,7 +4,10 @@ In this project we’ll build a large portion of the core Facebook user function
 
 ![screenshot ](https://github.com/SofiBretz/building_facebook/blob/feature/milestone1/app/assets/images/Building%20Facebook%20ERD.png?raw=true)
 
-Building Facebook ERD. 
+Building Facebook ERD.
+
+## Live Version:
+https://calm-gorge-65908.herokuapp.com/
 
 ## Built With
 
@@ -27,7 +30,6 @@ To get a local copy up and running follow these simple example steps.
 ### Install
 
 - Run bundle Install command.
-- Run bundle update command.
 - Run rails db:migrate command.
 - Run git pull origin master.
 
@@ -35,13 +37,12 @@ To get a local copy up and running follow these simple example steps.
 
 - Run on the terminal atom . (If you are using Atom platform, or the one you desired).
 - Open the files to investigate the connections of each others and understand how this project is created.
+- Go to the Live Version to use the app! :)
 
 ### Run tests
 
-- Run rails console command on your terminal.
-- Create users, events and all the test that you want to try about this project.
-- Open your browser, localhost:3000 and start navigating on this app.
-- Run command Rails Test.
+- Run rspec spec.
+- Feel free to modify the spec tests on the spec folder.
 - Enjoy!
 
 ## Authors
