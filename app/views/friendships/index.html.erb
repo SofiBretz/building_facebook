@@ -1,0 +1,15 @@
+<div class = "col-sm-6 col-sm-offset-3">
+  <div class = "row">
+    <h2>Friend Requests</h2>
+    <table class="table table-bordered">
+      <tbody>
+        <% @friend_requests.each do |user| %>
+          <tr>
+            <td><%= link_to user.first_name, user %></td>
+            <td><%= friend_status(user) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 text-right">
+      <%= gravatar_for @user, size: 150 %>
+      <div class="text-right">
+        <h3><strong><%= @user.first_name %> <%= @user.last_name %></strong></h3>
+        <p><%= @user.email %></p>
+        <p><span>Joined on</span> <%= @user.created_at.to_formatted_s(:long_ordinal)  %></p>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <% @user.posts.each do |p|  %>
+        <%= render partial:'shared/post', locals:{post: p} %>
+      <% end %>
+    </div>
+  </div>
+</div>

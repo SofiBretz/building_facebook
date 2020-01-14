@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3">
+      <% @posts.each do |post| %>
+          <div class="well">
+            <h3><%= gravatar_for post.user, size: 50 %> <%= link_to post.user.first_name, post.user %></h3>
+            <div class="col-12">
+              <strong><span>Posted <%= link_to time_ago_in_words(post.created_at), post %> ago</span></strong>
+            </div>
+            <div class="post-body">
+              <%= post.content %>
+            </div>
+            <div>
+              <button >
+                <%= like_unlike(post) %> (<%= post.likes.size%>)
+              </button>
+              <button >
+                <%= link_to "Comments", post %> (<%= post.comments.count %>)
+              </button>
+            </div>
+          </div>
+      <%end %>
+    </div>
+</div>
