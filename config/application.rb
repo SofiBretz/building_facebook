@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module BuildingFacebook
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.autoload = :classic
+    #config.autoload = :classic
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
